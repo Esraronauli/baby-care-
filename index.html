@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Care - Informasi Kesehatan Bayi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 20px 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Tips Section */
+        .tips-list {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .tips-list ul {
+            list-style: none;
+        }
+
+        .tips-list li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tips-list li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .creator-info {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .creator-info h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Baby<span>Care</span></div>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#info">Informasi</a></li>
+                <li><a href="#tips">Tips</a></li>
+                <li><a href="#about">Tentang</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Selamat Datang di Baby Care</h1>
+            <p>Portal Informasi Kesehatan Bayi Terpercaya untuk Orang Tua Indonesia</p>
+            <a href="#info" class="btn">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info">
+        <div class="container">
+            <h2 class="section-title">Informasi Kesehatan Bayi</h2>
+            <div class="info-cards">
+                <div class="card">
+                    <div class="card-icon">🍼</div>
+                    <h3>Nutrisi Bayi</h3>
+                    <p>ASI eksklusif sangat penting untuk 6 bulan pertama. Setelah itu, perkenalkan MPASI secara bertahap dengan menu bergizi seimbang yang disesuaikan dengan usia bayi.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💉</div>
+                    <h3>Imunisasi</h3>
+                    <p>Jadwal imunisasi lengkap melindungi bayi dari berbagai penyakit berbahaya. Pastikan bayi mendapat imunisasi sesuai jadwal yang direkomendasikan oleh dokter.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🛏️</div>
+                    <h3>Pola Tidur</h3>
+                    <p>Bayi baru lahir membutuhkan 14-17 jam tidur per hari. Ciptakan rutinitas tidur yang konsisten dan lingkungan yang nyaman untuk kualitas tidur yang baik.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌡️</div>
+                    <h3>Kesehatan Umum</h3>
+                    <p>Pantau suhu tubuh, berat badan, dan perkembangan bayi secara rutin. Konsultasikan dengan dokter jika ada gejala yang tidak biasa.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🧼</div>
+                    <h3>Kebersihan</h3>
+                    <p>Jaga kebersihan bayi dengan memandikan secara teratur, membersihkan tali pusat, dan mengganti popok secara berkala untuk mencegah ruam dan infeksi.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">👶</div>
+                    <h3>Tumbuh Kembang</h3>
+                    <p>Stimulasi perkembangan motorik dan sensorik bayi melalui permainan edukatif, komunikasi, dan interaksi yang positif setiap hari.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips">
+        <div class="container">
+            <h2 class="section-title">Tips Merawat Bayi</h2>
+            <div class="tips-list">
+                <ul>
+                    <li><strong>Berikan ASI Eksklusif:</strong> ASI adalah makanan terbaik untuk bayi hingga usia 6 bulan tanpa tambahan apapun.</li>
+                    <li><strong>Jaga Kebersihan:</strong> Cuci tangan sebelum menyentuh bayi dan sterilkan peralatan makan secara teratur.</li>
+                    <li><strong>Rutin Kontrol Kesehatan:</strong> Kunjungi posyandu atau dokter anak secara berkala untuk memantau pertumbuhan.</li>
+                    <li><strong>Perhatikan Tanda Bahaya:</strong> Segera hubungi dokter jika bayi demam tinggi, tidak mau menyusu, atau terlihat lemas.</li>
+                    <li><strong>Ciptakan Bonding:</strong> Pelukan, sentuhan, dan komunikasi membantu perkembangan emosional bayi.</li>
+                    <li><strong>Jaga Suhu Ruangan:</strong> Pastikan kamar bayi tidak terlalu panas atau dingin (idealnya 20-22°C).</li>
+                    <li><strong>Posisi Tidur Aman:</strong> Bayi sebaiknya tidur telentang untuk mengurangi risiko SIDS (Sudden Infant Death Syndrome).</li>
+                    <li><strong>Stimulasi Dini:</strong> Ajak bayi bermain, berbicara, dan mendengarkan musik untuk merangsang perkembangannya.</li>
+                    <li><strong>Hindari Asap Rokok:</strong> Jauhkan bayi dari paparan asap rokok yang dapat mengganggu pernapasan.</li>
+                    <li><strong>Sabar dan Tenang:</strong> Merawat bayi membutuhkan kesabaran. Jangan ragu meminta bantuan jika merasa kewalahan.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Tentang Baby Care</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                Baby Care adalah platform informasi kesehatan bayi yang didedikasikan untuk membantu para orang tua 
+                dalam merawat dan menjaga kesehatan buah hati mereka. Kami menyediakan informasi yang akurat, 
+                terpercaya, dan mudah dipahami.
+            </p>
+            
+            <div class="creator-info">
+                <h3>Pencetus Website</h3>
+                <p style="font-size: 1.5rem; font-weight: bold;">Esra Ronauli Siburian</p>
+                <p style="margin-top: 15px; font-style: italic;">
+                    "Setiap bayi berhak mendapatkan perawatan terbaik. Mari bersama-sama memberikan yang terbaik untuk generasi penerus bangsa."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Baby Care - Informasi Kesehatan Bayi</p>
+            <p>Dibuat oleh: Esra Ronauli Siburian</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">
+                <em>Disclaimer: Informasi di website ini bersifat edukatif. Untuk masalah kesehatan serius, konsultasikan dengan dokter anak.</em>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
